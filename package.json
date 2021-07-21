@@ -1,0 +1,40 @@
+{
+  "name": "easi-web-utils",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "easi-assets-deploy": "easi-assets-deploy",
+    "easi-auto-tag": "easi-auto-tag"
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.1",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.0",
+    "@types/webpack-env": "^1.16.2",
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "easi-assets-deploy": "https://github.com/infinitasx/easi-assets-deploy.git#main",
+    "easi-auto-tag": "https://github.com/infinitasx/easi-auto-tag.git#main",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.3",
+    "vue-tsc": "^0.0.24"
+  },
+  "peerDependencies": {
+    "js-cookie": "2",
+    "vue": "3"
+  },
+  "easiAssetsDeployConfig": {
+    "backend": {
+      "projectName": "",
+      "repositoryUrl": "",
+      "templateDir": "",
+      "branchName": ""
+    },
+    "assetsFilePattern": "*.html",
+    "asLibrary": true
+  }
+}
