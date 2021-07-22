@@ -22,14 +22,14 @@ export type IClientType = 'easi' | 'easicustomer' | 'easimalaysia' | 'easicourie
    * @param {*} url app跳转的h5链接
    * @param {*} show 是否显示 0 不显示，1显示
    */
-  export function toAppWeb({scheme = 'au.com.easi.courier', title, url, show}: IToAppWebOption) {
+  export function openAppWeb({scheme = 'au.com.easi.courier', title, url, show}: IToAppWebOption) {
     window.location.href = `${scheme}://web/help?text=${title}&url=${encodeURIComponent(
       url as string,
     )}&show=${show}`;
   }
 
   // 跳App原生页面
-export function toAppPage(path: string, scheme = 'au.com.easi.customer') {
+export function openAppView(path: string, scheme = 'au.com.easi.customer') {
   window.location.href = `${scheme}://${path}`;
 }
 

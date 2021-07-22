@@ -8,7 +8,7 @@ export { EASILocal, EASISession, EASICookie } from './storage/Storage'
 export { createWorker, debounced, isMobile, copy, loadScript } from './utils/utils'
 
 // 常用于App内嵌H5的工具函数
-export { toAppWeb, compareUserAgent, compareVersion, toAppPage } from './utils/app'
+export { openAppWeb, compareUserAgent, compareVersion, openAppView } from './utils/app'
 
 // 常用的use函数
-export { default as EASIIndexDBPlugin, useDB, usePagination, useModalVisible } from './utils/use'
+// export { default as EASIIndexDBPlugin, useDB, usePagination, useModalVisible } from './utils/use'
