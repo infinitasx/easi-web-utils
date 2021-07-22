@@ -298,7 +298,8 @@ export default {
 
 > 均可设置有效期，单位毫秒
 
-###如何使用
+### 如何使用
+
 ```ts
 import { EASILocal, EASICookie, EASISession } from './lib/index'
 
@@ -331,7 +332,8 @@ EASISession.clear()
 
 > 打开 App内 web/help地址
 
-###如何使用
+### 如何使用
+
 ```ts
 interface IToAppWebOption {
   scheme: string; // App schema
@@ -348,7 +350,7 @@ function toAppWeb({scheme = 'au.com.easi.courier', title, url, show}: IToAppWebO
 
 > 打开 App原生页面
 
-###如何使用
+### 如何使用
 ```ts
 function toAppPage(path: string, scheme = 'au.com.easi.customer'): void{}
 ```
@@ -359,7 +361,7 @@ function toAppPage(path: string, scheme = 'au.com.easi.customer'): void{}
 
 > 判断App版本号,目前只支持用户端App
 
-###如何使用
+### 如何使用
 ```ts
 // targetVersion: 需要判断的最低版本号，如果高于此版本号则返回true
 function compareVersion(targetVersion: string, ua: string = navigator.userAgent.toLowerCase()): boolean {}
@@ -371,7 +373,7 @@ function compareVersion(targetVersion: string, ua: string = navigator.userAgent.
 
 > 判断App userAgent是否合法，如果合法则返回true
 
-###如何使用
+### 如何使用
 ```ts
 /*
  * 需要判断的客户端打开环境
@@ -397,7 +399,8 @@ function compareUserAgent(clientTypeArray: IClientType[] = [], ua = navigator.us
 
 > 创建一个web worker线程
 
-###如何使用
+### 如何使用
+
 ```ts
 
 // 函数返回子线程返回的数据
@@ -414,7 +417,8 @@ function createWorker(
 
 > 动态加载js资源
 
-###如何使用
+### 如何使用
+
 ```ts
 // link: js资源的链接地址
 // id: 给这个js资源一个唯一的标示，避免重复加载
@@ -427,7 +431,8 @@ function loadScript(link: string, id: string): Promise<void>{}
 
 > 防抖函数
 
-###如何使用
+### 如何使用
+
 ```ts
 // func: 要执行的函数
 // delay: 延迟执行时间
@@ -441,7 +446,8 @@ function debounced(func: () => void, delay = 200, immediate = false): () => void
 
 > 判断当前是否是移动端环境，如果是则返回true
 
-###如何使用
+### 如何使用
+
 ```ts
 function isMobile(): boolean {}
 ```
@@ -452,7 +458,8 @@ function isMobile(): boolean {}
 
 > 一键复制，复制成功则返回true
 
-###如何使用
+### 如何使用
+
 ```ts
 function copy(
         content: string, // 要复制的文案
