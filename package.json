@@ -10,22 +10,28 @@
   },
   "dependencies": {
     "js-cookie": "^2.2.1",
-    "vue": "^3.0.5"
+    "vue": "^3.0.5",
+    "vue-i18n": "^9.1.7"
   },
   "devDependencies": {
+    "@originjs/vite-plugin-require-context": "^1.0.5",
+    "@rollup/plugin-node-resolve": "^13.0.2",
+    "@types/js-cookie": "^2.2.7",
     "@types/node": "^16.4.0",
     "@types/webpack-env": "^1.16.2",
     "@vitejs/plugin-vue": "^1.2.5",
     "@vue/compiler-sfc": "^3.0.5",
     "easi-assets-deploy": "https://github.com/infinitasx/easi-assets-deploy.git#main",
     "easi-auto-tag": "https://github.com/infinitasx/easi-auto-tag.git#main",
+    "rollup-plugin-commonjs": "^10.1.0",
     "typescript": "^4.3.2",
     "vite": "^2.4.3",
     "vue-tsc": "^0.0.24"
   },
   "peerDependencies": {
     "js-cookie": "2",
-    "vue": "3"
+    "vue": "3",
+    "vue-i18n": "9"
   },
   "easiAssetsDeployConfig": {
     "backend": {

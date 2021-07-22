@@ -1,7 +1,7 @@
-export default class EASIUtils {
+
 
   // 创建web worker
-  static createWorker(
+  export function createWorker(
     func: () => void,
     data: any,
     backUpFunc?: (data: any) => any,): Promise<any> {
@@ -33,7 +33,7 @@ export default class EASIUtils {
   }
 
   // 动态引入script
-  static loadScript(link: string, id: string) {
+  export function loadScript(link: string, id: string) {
     return new Promise((resolve, reject) => {
       if (document.querySelector(`#${id}`)) {
         return resolve('');
@@ -63,40 +63,41 @@ export default class EASIUtils {
   // @param returnType 返回的数据类型，默认返回对象，即key为文件名，value为扫描出来的文件内容
   // @param fileExt 要匹配的文件名后缀，默认ts
   // @param deep 是否要递归文件夹内所有的子文件夹，默认为true
-  static scanFiles(path: string, returnType: 'object' | 'array' = 'object', fileExt = 'ts', deep = true) {
-    const reg = new RegExp('\\.' + fileExt + '$', 'gim');
-    const ctx = require.context(path, deep, reg)
-    if (returnType === 'object') {
-      const map: any = {};
-      for (const key of ctx.keys()) {
-        const keyArr = key.split('/');
-        keyArr.shift(); // 移除.
-        map[keyArr.join('.').replace(reg, '')] = ctx(key).default as never;
-      }
-      return map;
-    } else if (returnType === 'array') {
-      const map: any = [];
-      for (const key of ctx.keys()) {
-        map.push(...ctx(key).default);
-      }
-      return map;
-    }
-  }
+  // export function scanFiles(ctx: any, fileExt = 'ts', returnType: 'object' | 'array' = 'object', deep = true) {
+  //   const reg = new RegExp('\\.' + fileExt + '$', 'gim');
+  //   if (returnType === 'object') {
+  //     const map: any = {};
+  //     for (const key of ctx.keys()) {
+  //       const keyArr = key.split('/');
+  //       keyArr.shift(); // 移除.
+  //       map[keyArr.join('.').replace(reg, '')] = ctx(key).default as never;
+  //     }
+  //     return map;
+  //   } else if (returnType === 'array') {
+  //     const map: any = [];
+  //     for (const key of ctx.keys()) {
+  //       map.push(...ctx(key).default);
+  //     }
+  //     return map;
+  //   }
+  // }
 
   // 防抖，多用于搜索输入
   // @param func 传入的回调函数
   // @param delay 延时抖动时长，默认200毫秒
   // @param immediate 调用时是否立即触发回调函数，默认false
-  static debounced(func: () => void, delay = 200, immediate = false): () => void{
-    let timer: NodeJS.Timeout;
+  export function debounced(func: () => void, delay = 200, immediate = false): () => void {
+    let timer: any;
     return (...args: any) => {
       if (immediate) {
+        // @ts-ignore
         func.apply(this, args);
         immediate = false;
         return;
       }
       clearTimeout(timer);
       timer = setTimeout(() => {
+        // @ts-ignore
         func.apply(this, args);
       }, delay);
     };
@@ -104,14 +105,14 @@ export default class EASIUtils {
 
   // 判断是否为移动端
   // 移动端判断, true为移动端
-  static isMobile(): boolean {
+  export function isMobile(): boolean {
     return !!window.navigator.userAgent.match(
       /(phone|pad|pod|iPhone|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i,
     );
   }
 
   // 复制
-  static copy(
+  export function copy(
     content: string,
     container: HTMLElement = document.querySelector('body') as HTMLElement,
   ): boolean {
@@ -129,4 +130,3 @@ export default class EASIUtils {
     textarea.remove();
     return result;
   }
-}

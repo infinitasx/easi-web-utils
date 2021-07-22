@@ -75,8 +75,8 @@ export default class EASIIndexDB {
       this[`$${storeName}`] = {
         add: (data: any, key?: IDBValidKey) => this.add(storeName, data, key),
         put: (data: any, key?: IDBValidKey) => this.put(storeName, data, key),
-        getAll: (keyRange?: IDBKeyRange | IDBValidKey | null, count?: number) =>
-          this.getAll(storeName, keyRange, count),
+        getAll: (key: string, keyRange?: IDBKeyRange | IDBValidKey | null, count?: number) =>
+          this.getAll(storeName, key, keyRange, count),
         get: (keyValue: IDBValidKey | IDBKeyRange, key?: string) =>
           this.get(storeName, keyValue, key),
         getAllKeys: (keyRange?: IDBValidKey | IDBKeyRange | null, count?: number) =>
@@ -319,6 +319,7 @@ export default class EASIIndexDB {
   // 获取表内所有数据
   async getAll(
     storeName: string,
+    key?: string,
     keyRange?: IDBKeyRange | IDBValidKey | null,
     count?: number,
   ): Promise<any[]> {
@@ -326,9 +327,10 @@ export default class EASIIndexDB {
       await this.initPromise;
     }
     return new Promise((resolve, reject) => {
-      const objectStore = (this.db as IDBDatabase).transaction(storeName).objectStore(storeName);
+      let objectStore = (this.db as IDBDatabase).transaction(storeName).objectStore(storeName);
+      const preAction = key ? objectStore.index(key) : objectStore
       const request =
-        count != null ? objectStore.getAll(keyRange, count) : objectStore.getAll(keyRange);
+        count != null ? preAction.getAll(keyRange, count) : preAction.getAll(keyRange);
       request.onsuccess = function () {
         resolve(request.result);
       };
