@@ -120,7 +120,8 @@ name 索引名称<br>
 #### index: (storeName: string, name: string)=> Promise<IDBIndex>
 <hr/>
 
-###如何使用
+### 如何使用
+
 ```ts
 import { EASIIndexDB } from './lib/index'
 
@@ -183,7 +184,8 @@ function useModalVisible(
 ```
 
 
-###如何使用
+### 如何使用
+
 ```vue
 <easi-table 
         @handleShowCreateModal="setVisibleModal('showCreateModal', true, $event)"
@@ -253,7 +255,8 @@ function usePagination(
 
 > 自组件内使用indexdb，使用此函数，必须确保已经在Vue内注册了indexDB实例
 
-###如何使用
+### 如何使用
+
 > 在main.ts内初始化indexdb，并挂载到Vue实例内
 ```ts
 // main.ts
