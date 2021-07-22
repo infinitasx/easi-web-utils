@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "js-cookie": "^2.2.1",
-    "vue": "^3.0.5",
-    "vue-i18n": "^9.1.7"
+    "vue": "^3.0.5"
   },
   "devDependencies": {
     "@originjs/vite-plugin-require-context": "^1.0.5",
@@ -30,8 +29,7 @@
   },
   "peerDependencies": {
     "js-cookie": "2",
-    "vue": "3",
-    "vue-i18n": "9"
+    "vue": "3"
   },
   "easiAssetsDeployConfig": {
     "backend": {

@@ -15,7 +15,6 @@
 
 - [Vue 3+](https://github.com/vuejs/vue-next)
 - [js-cookie 2+](https://github.com/js-cookie/js-cookie)
-- [vue-i18n 9+](https://github.com/intlify/vue-i18n-next)
 
 
 ### 说明导航
