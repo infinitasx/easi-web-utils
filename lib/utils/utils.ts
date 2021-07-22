@@ -107,7 +107,7 @@
   // 移动端判断, true为移动端
   export function isMobile(): boolean {
     return !!window.navigator.userAgent.match(
-      /(phone|pad|pod|iPhone|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i,
+      /(Android|iPhone|SymbianOS|Windows Phone|iPad|iPod)/i,
     );
   }
 
