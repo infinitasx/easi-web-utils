@@ -20,6 +20,8 @@
   - <a href="#session">SessionStorage类</a>
 - <a href="#use">结合Vue3项目的函数封装</a>
   - <a href="#useModalVisible">useModalVisible - 用来管理多个弹框的显示隐藏，可传入预处理函数</a>
+  - <a href="#usePagination">usePagination - 返回ant页码数据类型，只关心需要关心的页码属性</a>
+  - <a href="#useDB">useDB - 在vue组件内使用indexDB</a>
 - <a href="#app">App嵌套H5常用工具函数</a>
   - <a href="#toAppWeb">toAppWeb</a>
   - <a href="#toAppPage">toAppPage - 跳转App原生页面</a>
