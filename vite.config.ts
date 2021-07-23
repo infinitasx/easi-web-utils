@@ -1,7 +1,9 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { babel } from '@rollup/plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import ViteRequireContext from '@originjs/vite-plugin-require-context'
+import ts2 from 'rollup-plugin-typescript2';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import * as path from 'path';
 
@@ -12,6 +14,26 @@ export default defineConfig({
     vue(),
     nodeResolve(),
     commonjs(),
+    {
+      ...ts2({
+        check: true,
+        tsconfig: path.resolve(__dirname, 'tsconfig.json'), // your tsconfig.json path
+        tsconfigOverride: {
+          compilerOptions: {
+            sourceMap: false,
+            declaration: true,
+            declarationMap: false
+          },
+          exclude: ['src/main.ts']
+        }
+      }),
+      enforce: 'pre'
+    },
+    babel({
+      exclude: 'node_modules/**', // 只编译源代码
+      extensions: ['.ts'],
+      babelHelpers: 'runtime'
+    }),
     ViteRequireContext()
   ],
   build: {
@@ -21,6 +43,7 @@ export default defineConfig({
       fileName: 'index',
       formats: ['umd']
     },
+    cssCodeSplit: true,
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       external: ['vue', 'js-cookie'],
@@ -31,6 +54,7 @@ export default defineConfig({
           vue: 'Vue',
           'js-cookie': 'Cookies',
         },
+        entryFileNames: 'index.js',
         format: 'umd',
         name: 'EASI-Utils',
       }
