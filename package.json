@@ -12,6 +12,7 @@
     "js-cookie": "^2.2.1",
     "vue": "^3.0.5"
   },
+  "main": "/dist/index.js",
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/plugin-external-helpers": "^7.14.5",
