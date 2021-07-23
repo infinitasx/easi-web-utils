@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'lib/index.ts'),
+      entry: path.resolve(__dirname, 'index.ts'),
       name: 'EASI-Utils',
       fileName: 'index',
       formats: ['umd']
