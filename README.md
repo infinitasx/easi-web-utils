@@ -20,10 +20,7 @@
 ### 说明导航
 
 - <a href="#indexdb">IndexDB工具类</a>
-- <a href="#storage">本地存储工具类</a>
-  - <a href="#cookie">Cookie类</a>
-  - <a href="#local">LocalStorage类</a>
-  - <a href="#session">SessionStorage类</a>
+- <a href="#storage">操作 cookie / localStorage / sessionStorage</a>
 
 [comment]: <> (- <a href="#use">结合Vue3项目的函数封装</a>)
 
@@ -388,33 +385,33 @@ doSomething()
 
 <br/>
 <hr id="storage"/>
-<p><strong style="font-size: 22px"><span id="cookie">EASICookie</span> / <span id="local">EASILocal</span> / <span id="session">EASISession</span></strong></p>
+<p><strong style="font-size: 22px">操作<span id="cookie">cookie</span> / <span id="local">localStorage</span> / <span id="session">sessionStorage</span></strong></p>
 
 > 均可设置有效期，单位毫秒
 
 ### 如何使用
 
 ```ts
-import { EASILocal, EASICookie, EASISession } from './lib/index'
+import { setLocal, getLocal, clearLocal, removeLocal, setSession, getSession, clearSession, removeSession, setCookie, getCookie, removeCookie } from './lib/index'
 
 // 保存一个小时有效期的token，不传第三个参数则默认永久有效，sessionStorage除外
-EASICookie.set('token', token, 60 * 60 * 1000)
-EASILocal.set('token', token, 60 * 60 * 1000)
-EASISession.set('token', token, 60 * 60 * 1000)
+setLocal('token', token, 60 * 60 * 1000)
+setSession('token', token, 60 * 60 * 1000)
+setCookie('token', token, 60 * 60 * 1000)
 
 // 读取token, 如果超过有效期或无数据会返回空。数据类型与存入时一致，===有效
-EASICookie.get('token')
-EASILocal.get('token')
-EASISession.get('token')
+getLocal('token')
+getSession('token')
+getCookie('token')
 
 // 删除某一个key
-EASICookie.remove('token')
-EASILocal.remove('token')
-EASISession.remove('token')
+removeLocal('token')
+removeSession('token')
+removeCookie('token')
 
 // 清空所有数据，Cookie暂未实现全部清除
-EASILocal.clear()
-EASISession.clear()
+clearLocal()
+clearSession()
 ```
 
 <br/>

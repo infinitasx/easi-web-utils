@@ -1,14 +1,33 @@
 // indexDB
-export { default as EASIIndexDB } from './lib/indexdb/IndexDB'
+export {default as EASIIndexDB} from './lib/IndexDB'
+// indexDB的vue插件
+export {default as indexDBPlugin, useDB} from './lib/indexdbPlugin'
 
 // Cookie, localStorage, sessionStorage
-export { EASILocal, EASISession, EASICookie } from './lib/storage/Storage'
+export {setLocal, getLocal, clearLocal, removeLocal} from './lib/localstorage';
+export {setSession, getSession, clearSession, removeSession} from './lib/sessionstorage';
+export {setCookie, getCookie, removeCookie} from './lib/cookie'
 
-// 其他工具函数
-export { createWorker, debounced, isMobile, copy, loadScript } from './lib/utils/utils'
+// 创建web worker
+export {createWorker} from './lib/createWorker';
+
+// 动态读取文件
+export {loadScript} from './lib/loadScript';
+
+// 防抖函数
+export {debounced} from './lib/debounced';
+
+// 是否为移动端
+export {isMobile} from './lib/ismobile';
+
+// 一键复制
+export {copy} from './lib/copy';
 
 // 常用于App内嵌H5的工具函数
-export { openAppWeb, compareUserAgent, compareVersion, openAppView } from './lib/utils/app'
+export {openAppWeb} from './lib/openAppWeb';
 
-// 常用的use函数
-// export { default as EASIIndexDBPlugin, useDB, usePagination, useModalVisible } from './utils/use'
+export {compareUserAgent} from './lib/compareUserAgent';
+
+export {compareVersion} from './lib/compareVersion';
+
+export {openAppView} from './lib/openAppView';

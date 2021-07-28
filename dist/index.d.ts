@@ -1,4 +1,14 @@
-export { default as EASIIndexDB } from './lib/indexdb/IndexDB';
-export { EASILocal, EASISession, EASICookie } from './lib/storage/Storage';
-export { createWorker, debounced, isMobile, copy, loadScript } from './lib/utils/utils';
-export { openAppWeb, compareUserAgent, compareVersion, openAppView } from './lib/utils/app';
+export { default as EASIIndexDB } from './lib/IndexDB';
+export { default as indexDBPlugin, useDB } from './lib/indexdbPlugin';
+export { setLocal, getLocal, clearLocal, removeLocal } from './lib/localstorage';
+export { setSession, getSession, clearSession, removeSession } from './lib/sessionstorage';
+export { setCookie, getCookie, removeCookie } from './lib/cookie';
+export { createWorker } from './lib/createWorker';
+export { loadScript } from './lib/loadScript';
+export { debounced } from './lib/debounced';
+export { isMobile } from './lib/ismobile';
+export { copy } from './lib/copy';
+export { openAppWeb } from './lib/openAppWeb';
+export { compareUserAgent } from './lib/compareUserAgent';
+export { compareVersion } from './lib/compareVersion';
+export { openAppView } from './lib/openAppView';
