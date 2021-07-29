@@ -169,217 +169,56 @@ async function doSomething(primaryKey){
 doSomething()
 ```
 
+
+
 <br/>
-<hr id="use"/>
+<hr/>
+<p><strong id="useDB" style="font-size: 22px">useDB</strong></p>
 
-[comment]: <> (### 结合Vue3项目的函数封装)
+> 自组件内使用indexdb，使用此函数，必须确保已经在Vue内注册了indexDB实例
 
-[comment]: <> (<p><strong id="useModalVisible" style="font-size: 22px">useModalVisible</strong></p>)
+### 如何使用
 
-[comment]: <> (> 控制多个弹框显示隐藏，可以传入预处理函数)
+> 在main.ts内初始化indexdb，并挂载到Vue实例内
 
-[comment]: <> (### 函数类型)
+```ts
 
-[comment]: <> (```ts)
+// main.ts
 
-[comment]: <> (interface InitValue {)
+import { createApp } from 'vue'
+import App from 'App.vue'
+import { EASIIndexDBPlugin } from '.lib/index'
 
-[comment]: <> (  [props: string]: boolean)
+createApp(App).use(EASIIndexDBPlugin, {
+  databaseName: 'myDB',
+  // 具体参数见 IndexDB工具类
+  options: {
+    version: 1,
+    store: [
+      {
+        storeName: 'test1'
+      }
+    ]
+  }
+})
 
-[comment]: <> (})
+```
 
-[comment]: <> (function useModalVisible&#40;)
+> 在需要调用indexDB的组件内使用useDB，会返回Vue实例内挂载的indexDB实例
 
-[comment]: <> (  initValue: InitValue, // 接受一个初始化对象，初始化各弹框的显示/隐藏状态)
+```ts
 
-[comment]: <> (  prevAction: &#40;...arg: any[]&#41; => void // 执行set操作前的预处理函数，这里只能获取到setValue入参除key,value之外的参数)
+import { useDB } from "./lib/index";
 
-[comment]: <> (&#41;: [value: InitValue, setValue: &#40;key: string, value: boolean, ...args: any[]&#41; => void] {})
-
-[comment]: <> (```)
-
-
-[comment]: <> (### 如何使用)
-
-[comment]: <> (```vue)
-
-[comment]: <> (<easi-table )
-
-[comment]: <> (        @handleShowCreateModal="setVisibleModal&#40;'showCreateModal', true, $event&#41;")
-
-[comment]: <> (        @handleShowUpdateModal="setVisibleModal&#40;'showUpdateModal', true, $event&#41;")
-
-[comment]: <> (/>)
-
-[comment]: <> (<create-modal v-model:visible="visibleModal.showCreateModal" :item="currentTableItem" />)
-
-[comment]: <> (<update-modal v-model:visible="visibleModal.showUpdateModal" :item="currentTableItem" />)
-
-[comment]: <> (```)
-
-[comment]: <> (```ts)
-
-[comment]: <> (import { useModalVisible } from './lib/index')
-
-[comment]: <> (export default {)
-
-[comment]: <> (  setup&#40;&#41;{)
-
-[comment]: <> (    // 模拟table内的某一个row-data，用于传递给弹框组件)
-
-[comment]: <> (    const currentTableItem = ref<any>&#40;{}&#41;;)
-    
-[comment]: <> (    const [ visibleModal, setVisibleModal ] = useModalVisible&#40;{)
-
-[comment]: <> (      showCreateModal: false, // 控制创建弹框的显示和隐藏)
-
-[comment]: <> (      showUpdateModal: false, // 控制更新弹框的显示和隐藏)
-
-[comment]: <> (    }, &#40;item: any&#41; => {)
-
-[comment]: <> (      currentTableItem.value = item || {})
-
-[comment]: <> (    }&#41;)
-    
-[comment]: <> (    return {)
-
-[comment]: <> (      visibleModal,)
-
-[comment]: <> (      setVisibleModal)
-
-[comment]: <> (    })
-
-[comment]: <> (  })
-
-[comment]: <> (})
-
-[comment]: <> (```)
-
-[comment]: <> (<br/>)
-
-[comment]: <> (<hr/>)
-
-[comment]: <> (<p><strong id="usePagination" style="font-size: 22px">usePagination</strong></p>)
-
-[comment]: <> (> 通用的页码初始化函数，返回ant Pagination类型的页码数据，主要是为了统一样式，给部分属性默认值)
-
-[comment]: <> (### 函数类型)
-
-[comment]: <> (```ts)
-
-[comment]: <> (interface Pagination {)
-
-[comment]: <> (  current: number;)
-
-[comment]: <> (  pageSize: number;)
-
-[comment]: <> (  defaultPageSize?: number;)
-
-[comment]: <> (  disabled?: boolean;)
-
-[comment]: <> (  hideOnSinglePage?: boolean;)
-
-[comment]: <> (  itemRender?: &#40;PageRender: PageRender&#41; => VNode | Slots;)
-
-[comment]: <> (  pageSizeOptions?: string[];)
-
-[comment]: <> (  showLessItems?: boolean;)
-
-[comment]: <> (  showQuickJumper?: boolean;)
-
-[comment]: <> (  showSizeChanger?: boolean;)
-
-[comment]: <> (  showTotal?: &#40;total: number, range: [number, number]&#41; => string;)
-
-[comment]: <> (  simple?: boolean;)
-
-[comment]: <> (  size?: string;)
-
-[comment]: <> (  total: number;)
-
-[comment]: <> (  buildOptionText?: &#40;props: { value: number }&#41; => string;)
-
-[comment]: <> (})
-
-[comment]: <> (function usePagination&#40;)
-
-[comment]: <> (  initValue: Pagination, // 接受一个初始化对象，一般只需要传入current, total, pageSize)
-
-[comment]: <> (&#41;: Pagination {})
-
-[comment]: <> (```)
-
-[comment]: <> (<br/>)
-
-[comment]: <> (<hr/>)
-
-[comment]: <> (<p><strong id="useDB" style="font-size: 22px">useDB</strong></p>)
-
-[comment]: <> (> 自组件内使用indexdb，使用此函数，必须确保已经在Vue内注册了indexDB实例)
-
-[comment]: <> (### 如何使用)
-
-[comment]: <> (> 在main.ts内初始化indexdb，并挂载到Vue实例内)
-
-[comment]: <> (```ts)
-
-[comment]: <> (// main.ts)
-
-[comment]: <> (import { createApp } from 'vue')
-
-[comment]: <> (import App from 'App.vue')
-
-[comment]: <> (import { EASIIndexDBPlugin } from '.lib/index')
-
-[comment]: <> (createApp&#40;App&#41;.use&#40;EASIIndexDBPlugin, {)
-
-[comment]: <> (  databaseName: 'myDB',)
-
-[comment]: <> (  // 具体参数见 IndexDB工具类)
-
-[comment]: <> (  options: {)
-
-[comment]: <> (    version: 1,)
-
-[comment]: <> (    store: [)
-
-[comment]: <> (      {)
-
-[comment]: <> (        storeName: 'test1')
-
-[comment]: <> (      })
-
-[comment]: <> (    ])
-
-[comment]: <> (  })
-
-[comment]: <> (}&#41;)
-
-[comment]: <> (```)
-
-[comment]: <> (> 在需要调用indexDB的组件内使用useDB，会返回Vue实例内挂载的indexDB实例)
-
-[comment]: <> (```ts)
-
-[comment]: <> (import { useDB } from "./lib/index";)
-
-[comment]: <> (export default {)
-
-[comment]: <> (  setup&#40;&#41; {)
-
-[comment]: <> (    const db = useDB&#40;&#41;;)
-    
-[comment]: <> (    const getData = async &#40;&#41; => {)
-
-[comment]: <> (      return await db.$test1.get&#40;1&#41;)
-
-[comment]: <> (    })
-
-[comment]: <> (  })
-
-[comment]: <> (})
-
-[comment]: <> (```)
+export default {
+  setup() {
+    const db = useDB();
+    const getData = async () => {
+      return await db.$test1.get(1)
+    }
+  }
+}
+```
 
 
 
