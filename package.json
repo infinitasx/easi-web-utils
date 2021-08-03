@@ -1,6 +1,6 @@
 {
   "name": "easi-web-utils",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
