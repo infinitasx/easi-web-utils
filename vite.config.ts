@@ -39,7 +39,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'index.ts'),
-      name: 'EASI-Utils',
+      name: 'EASIUtils',
       fileName: 'index',
       formats: ['umd']
     },
@@ -56,7 +56,7 @@ export default defineConfig({
         },
         entryFileNames: 'index.js',
         format: 'umd',
-        name: 'EASI-Utils',
+        name: 'EASIUtils',
       }
     }
   }
