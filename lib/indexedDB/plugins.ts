@@ -1,5 +1,5 @@
-import { reactive, VNode, Slots, App, inject } from 'vue';
-import EASIIndexDB, { Options } from './IndexDB';
+import { App, inject } from 'vue';
+import EASIIndexDB, { Options } from './index';
 
 const IndexDBSymbol = Symbol();
 export function useDB(): EASIIndexDB {

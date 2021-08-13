@@ -1,7 +1,7 @@
 // indexDB
-export {default as EASIIndexDB} from './lib/IndexDB'
+export {default as EASIIndexDB} from './lib/indexedDB'
 // indexDB的vue插件
-export {default as indexDBPlugin, useDB} from './lib/indexdbPlugin'
+export {default as indexDBPlugin, useDB} from './lib/indexedDB/plugins'
 
 // Cookie, localStorage, sessionStorage
 export {setLocal, getLocal, clearLocal, removeLocal} from './lib/localstorage';
