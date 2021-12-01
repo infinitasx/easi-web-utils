@@ -4,8 +4,8 @@ export {default as EASIIndexDB} from './lib/indexedDB'
 export {default as indexDBPlugin, useDB} from './lib/indexedDB/plugins'
 
 // Cookie, localStorage, sessionStorage
-export {setLocal, getLocal, clearLocal, removeLocal} from './lib/localstorage';
-export {setSession, getSession, clearSession, removeSession} from './lib/sessionstorage';
+export {setLocal, getLocal, clearLocal, removeLocal} from './lib/localStorage';
+export {setSession, getSession, clearSession, removeSession} from './lib/sessionStorage';
 export {setCookie, getCookie, removeCookie} from './lib/cookie'
 
 // 创建web worker

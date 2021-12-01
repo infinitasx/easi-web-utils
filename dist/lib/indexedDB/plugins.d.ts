@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import EASIIndexDB, { Options } from './IndexDB';
+import EASIIndexDB, { Options } from './index';
 export declare function useDB(): EASIIndexDB;
 declare const _default: {
     install: (app: App, props: {

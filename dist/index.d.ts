@@ -1,7 +1,7 @@
-export { default as EASIIndexDB } from './lib/IndexDB';
-export { default as indexDBPlugin, useDB } from './lib/indexdbPlugin';
-export { setLocal, getLocal, clearLocal, removeLocal } from './lib/localstorage';
-export { setSession, getSession, clearSession, removeSession } from './lib/sessionstorage';
+export { default as EASIIndexDB } from './lib/indexedDB';
+export { default as indexDBPlugin, useDB } from './lib/indexedDB/plugins';
+export { setLocal, getLocal, clearLocal, removeLocal } from './lib/localStorage';
+export { setSession, getSession, clearSession, removeSession } from './lib/sessionStorage';
 export { setCookie, getCookie, removeCookie } from './lib/cookie';
 export { createWorker } from './lib/createWorker';
 export { loadScript } from './lib/loadScript';
