@@ -18,7 +18,7 @@ export {loadScript} from './lib/loadScript';
 export {debounced} from './lib/debounced';
 
 // 是否为移动端
-export {isMobile} from './lib/ismobile';
+export {isMobile} from './lib/isMobile';
 
 // 一键复制
 export {copy} from './lib/copy';
