@@ -11,3 +11,4 @@
 ### Changed
 
 * 固定vue版本号
+* 优化debounce函数

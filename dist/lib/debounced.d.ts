@@ -1,1 +1,1 @@
-export declare function debounced(func: () => void, delay?: number, immediate?: boolean): () => void;
+export declare function debounced(func: (...args: any) => void, delay?: number, immediate?: boolean): (...args: any) => void;

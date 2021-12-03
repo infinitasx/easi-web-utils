@@ -6,7 +6,7 @@ export { setCookie, getCookie, removeCookie } from './lib/cookie';
 export { createWorker } from './lib/createWorker';
 export { loadScript } from './lib/loadScript';
 export { debounced } from './lib/debounced';
-export { isMobile } from './lib/ismobile';
+export { isMobile } from './lib/isMobile';
 export { copy } from './lib/copy';
 export { openAppWeb } from './lib/openAppWeb';
 export { compareUserAgent } from './lib/compareUserAgent';
